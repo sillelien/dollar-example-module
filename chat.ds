@@ -1,0 +1,14 @@
+redis= ("redis://localhost:6379/" + channel) as URI
+www= (("http:get://127.0.0.1:8111/" + channel) as URI)
+
+export server := { 
+           www subscribe {
+            $1.params >> redis
+            { body :  all redis }
+        }
+    };
+    
+export stop := {STOP(www);STOP(redis); @@ [STATE(www),STATE(redis)]}
+    
+export state:= [STATE(www),STATE(redis)]
+

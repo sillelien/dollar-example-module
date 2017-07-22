@@ -1,0 +1,4 @@
+{
+"main":"chat.ds",
+"dependencies":["org.twitter4j:twitter4j-core:4.0.2"]
+}
